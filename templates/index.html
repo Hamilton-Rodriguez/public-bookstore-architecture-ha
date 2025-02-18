@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{%block content%}
+
+<body>   
+            <!--section welcome-->
+            <section id="inicio" class="hero">
+
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 text-center">
+                            <h1 class="display-1 fw-bold text-white mb-4">Bienvenidos a la Librería El Mundo de Las Letras</h1>
+                            <p class="lead text-white mb-5">Descubre historias fascinantes y conocimientos infinitos en nuestra librería.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    <section id="catalogo" class="book-categories">
+        <div class="container">
+            
+            <div class="category-grid">
+                <div class="category-item">
+                    <img src= "{{ url_for('static', filename='assets/img/books.jpg')}}" alt="Libros variados" class="category-image">
+                   
+                    <h3>Ficción y No Ficción</h3>
+                </div>
+                <div class="category-item">
+                    <img src="{{ url_for('static', filename='assets/img/bebe.jpg')}}" alt="Libros infantiles" class="category-image">
+                    
+                    <h3>Infantil y Juvenil</h3>
+                </div>
+                <div class="category-item">
+                    <img src="{{ url_for('static', filename='assets/img/historia.jpg')}}" alt="Libros de historia" class="category-image">
+                    
+                    <h3>Historia y Ciencias</h3>
+                </div>
+            </div>
+            <p class="catalog-description">
+                Ofrecemos una amplia variedad de libros que abarcan desde novelas de ficción clásicas hasta obras contemporáneas, junto con una selección diversa de libros de no ficción que incluyen biografía, ensayos, libros de historia, ciencia y autoayuda.
+            </p>
+            <div class="button-wrapper">
+            <a href="{{ url_for('libros')}}" class="btn btn-primary btn-lg">Explora nuestro catálogo</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-nosotros" class="about-us">
+        <div class="container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <div class="about-content">
+                <img src="{{ url_for('static', filename='assets/img/man.jpg')}}" alt="Fundador Alejandro" class="about-image">
+                
+                <p>
+                    Fundada por Alejandro, un apasionado de los libros desde su infancia. Después de años de trabajar en la industria editorial, decidió seguir su sueño de abrir su propia librería. Con determinación y visión, Alejandro transformó un antiguo edificio en el corazón de la ciudad en un refugio para los amantes de la lectura. Ahora quiere empezar con un nuevo mercado y es la venta online.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contact-info">
+                <img src="{{ url_for('static', filename='assets/img/Coffee-Shop.png')}}" alt="Nuestra tienda" class="contact-image">
+                
+                <div class="contact-details">
+                    <p>Cra 128 #44-53<br>Medellín, COL<br>Tel: +57-12345678</p>
+                    <h3>Horario</h3>
+                    <p>Semana: 7:00am - 6:00pm<br>Sábados: 7:00am - 7:00pm<br>Cerrado los domingos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024, El mundo de las letras. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+{% endblock %}
