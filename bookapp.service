@@ -1,0 +1,11 @@
+[Unit]
+Description=My Flask Application
+
+[Service]
+User=opc
+WorkingDirectory=/home/opc/architecture-ha
+ExecStart=/usr/bin/python /home/opc/architecture-ha/oci_app_bogota.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
