@@ -8,12 +8,39 @@ app = Flask(__name__)
 def get_config(region):
     return oci.config.from_file(profile_name=region)
 
+
+# Aquí vamos:
+    # Leer las variables del workspace de Terraform Cloud con el API, y con un if asignar el valor correcto a la variable secrets_client
+
+
+
+
 ### Using sa-bogota-1 region
 config_sa_bogota = get_config("sa-bogota-1")
-#signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
+
+# ****** Esta línea puede estar sobrando. Revisar bien su función
+# signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
+
+
+
+# ##### Desplegar la aplicación normal oci_app_bogota.py comentando la línea de signer 
 
 # Initialize the SecretsClient
 secrets_client = oci.secrets.SecretsClient(config_sa_bogota)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Retrieve the vault secrets contents
 

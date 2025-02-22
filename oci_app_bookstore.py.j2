@@ -10,7 +10,7 @@ def get_config(region):
 
 ### Using sa-bogota-1 region
 config_sa_bogota = get_config("sa-bogota-1")
-#signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
+signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
 
 # Initialize the SecretsClient
 secrets_client = oci.secrets.SecretsClient(config_sa_bogota)
