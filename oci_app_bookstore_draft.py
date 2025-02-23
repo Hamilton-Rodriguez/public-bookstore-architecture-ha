@@ -8,46 +8,29 @@ app = Flask(__name__)
 def get_config(region):
     return oci.config.from_file(profile_name=region)
 
+config_location = get_config("sa-bogota-1")                                         ################### PLACE HOLDER ####################
 
-# Aquí vamos:
-    # Leer las variables del workspace de Terraform Cloud con el API, y con un if asignar el valor correcto a la variable secrets_client
-
-
-
-
-### Using sa-bogota-1 region
-config_sa_bogota = get_config("sa-bogota-1")
-
-# ****** Esta línea puede estar sobrando. Revisar bien su función
-# signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
-
-
-
-# ##### Desplegar la aplicación normal oci_app_bogota.py comentando la línea de signer 
 
 # Initialize the SecretsClient
-secrets_client = oci.secrets.SecretsClient(config_sa_bogota)
+secrets_client = oci.secrets.SecretsClient(config_location)
+
+# Retrieve the vault secrets IDs from the local file: /home/opc/vault_secret_ocids.txt
+
+file_path = '/home/opc/vault_secret_ocids.txt'
+vault_secrets_ocid_list = []
+with open(file_path, 'r') as file:
+    vault_secrets_ocid_list = file.read().splitlines()
+# Print the list to verify
+print(vault_secrets_ocid_list)
 
 
-
-
-
-
-
-
-
-
-
-
-
+vault_user = vault_secrets_ocid_list[0]                  ################### PLACE HOLDER ####################
+vault_password = vault_secrets_ocid_list[1]                  ################### PLACE HOLDER ####################
+vault_database = vault_secrets_ocid_list[2]                  ################### PLACE HOLDER ####################
+vault_host = vault_secrets_ocid_list[3]                  ################### PLACE HOLDER ####################
 
 
 # Retrieve the vault secrets contents
-
-vault_user = 'ocid1.vaultsecret.oc1.sa-bogota-1.amaaaaaav3pognaagc67tpnxo3yb7g5wplsiycihsabjmc56g7cwnk2zgy5a'
-vault_password = 'ocid1.vaultsecret.oc1.sa-bogota-1.amaaaaaav3pognaagctdfqix6ohnctyc4tuz6qegrrk5bcqnsdv5lqxvubmq'
-vault_database = 'ocid1.vaultsecret.oc1.sa-bogota-1.amaaaaaav3pognaadbqyfmh763jgl33tpbvkbodsso6vtfmpcagjtjoqdusq'
-vault_host = 'ocid1.vaultsecret.oc1.sa-bogota-1.amaaaaaav3pognaa7cw476u7eebw62gya4k6kgc4soirh46hngleak3dnsma'
 
 response = secrets_client.get_secret_bundle(vault_user)
 vault_user_value = response.data.secret_bundle_content.content
