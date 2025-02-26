@@ -20,8 +20,6 @@ file_path = '/home/opc/vault_secret_ocids.txt'
 vault_secrets_ocid_list = []
 with open(file_path, 'r') as file:
     vault_secrets_ocid_list = file.read().splitlines()
-# Print the list to verify
-print(vault_secrets_ocid_list)
 
 
 vault_user = vault_secrets_ocid_list[0]
