@@ -8,7 +8,7 @@ app = Flask(__name__)
 def get_config(region):
     return oci.config.from_file(profile_name=region)
 
-config_location = get_config("sa-bogota-1")                                       ################### PLACE HOLDER ####################
+config_location = get_config("us-ashburn-1")                                       ################### PLACE HOLDER ####################
 
 
 # Initialize the SecretsClient
