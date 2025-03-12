@@ -2,7 +2,6 @@ from flask import Flask, render_template
 import mysql.connector
 import oci
 import base64
-import socket
 
 app = Flask(__name__)
 
@@ -50,9 +49,7 @@ oci_dbsystem_host = base64.b64decode(vault_host_value).decode('utf-8')
 
 @app.route('/')
 def home():
-    opc_hostname = socket.gethostname()
-    ip_address = socket.gethostbyname(opc_hostname)
-    return render_template("index.html",ip_adress=ip_address)
+    return render_template("index.html")
 
 @app.route('/libros')
 def libros():
