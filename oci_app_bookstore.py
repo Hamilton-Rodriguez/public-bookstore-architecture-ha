@@ -52,7 +52,7 @@ oci_dbsystem_host = base64.b64decode(vault_host_value).decode('utf-8')
 def home():
     opc_hostname = socket.gethostname()
     ip_address = socket.gethostbyname(opc_hostname)
-    return render_template("index.html",ip_adress=ip_address)
+    return render_template("index.html",ip_address=ip_address)
 
 @app.route('/libros')
 def libros():
