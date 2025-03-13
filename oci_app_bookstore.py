@@ -56,6 +56,8 @@ def home():
 
 @app.route('/libros')
 def libros():
+    opc_hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(opc_hostname)    
     conn = mysql.connector.connect(
         host=oci_dbsystem_host,
         user=oci_dbsystem_user,
@@ -66,7 +68,7 @@ def libros():
     c.execute("SELECT * FROM Books")
     books = c.fetchall()
     conn.close()
-    return render_template("libros.html", books=books)
+    return render_template("libros.html", books=books, ip_address=ip_address)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
